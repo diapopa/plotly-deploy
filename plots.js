@@ -14,9 +14,9 @@ function init() {
   
 init();
 
-//function optionChanged(newSample) {
-//    console.log(newSample);
-//}
+function optionChanged(newSample) {
+    console.log(newSample);
+}
 
 function buildMetadata(sample) {
     d3.json("samples.json").then((data) => {
@@ -30,8 +30,8 @@ function buildMetadata(sample) {
     });
 }
 
-function optionChanged(newSample) {
-    buildMetadata(newSample);
-    buildCharts(newSample);
-}
+//function optionChanged(newSample) {
+//    buildMetadata(newSample);
+//    buildCharts(newSample);
+//}
 
