@@ -26,7 +26,7 @@ function buildMetadata(sample) {
         var PANEL = d3.select("#sample-metadata");
         
         PANEL.html("");
-        PANEL.append("h6").text(result[0], result.id);
+        PANEL.append("h6").text(Object.entries(result.id));
         PANEL.append("h6").text(result.ethnicity);
         PANEL.append("h6").text(result.gender);
         PANEL.append("h6").text(result.age);
