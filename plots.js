@@ -24,8 +24,6 @@ function buildMetadata(sample) {
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
         var PANEL = d3.select("#sample-metadata");
-        
-        //id = Object.entries(result)
 
         PANEL.html("");
         for (const [key, value] of Object.entries(result)) {
