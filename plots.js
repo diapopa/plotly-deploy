@@ -28,15 +28,12 @@ function buildMetadata(sample) {
         //id = Object.entries(result)
 
         PANEL.html("");
-        console.log(result.id)
-        PANEL.append("h6").text(result.id);
-        PANEL.append("h6").text(result.ethnicity);
-        PANEL.append("h6").text(result.gender);
-        PANEL.append("h6").text(result.age);
-        PANEL.append("h6").text(result.location);
-        PANEL.append("h6").text(result.bbtype);
-        PANEL.append("h6").text(result.wfreq);
-    });
+        for (const [key, value] of Object.entries(result)) {
+
+            PANEL.append("h6").text(key + ": " + value);
+        }
+
+        });
 }
 
 function optionChanged(newSample) {
