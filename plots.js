@@ -58,7 +58,7 @@ function buildCharts(idVal) {
 
         // Create arrays for top five city names and top five growth figures
         var topTenBacteriaNames = topTenOtuLabels.map(bacteria => bacteria.otu_labels);
-        var topTenBacteriaValues = topTenBacteria.map(bacteria => parseInt(bacteria.sample_values));
+        var topTenBacteriaValues = topTenOtuLabels.map(bacteria => parseInt(bacteria.sample_values));
 
         console.log(topTenBacteriaNames);
         console.log(topTenBacteriaValues);
