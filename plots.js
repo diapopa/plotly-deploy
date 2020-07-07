@@ -50,6 +50,13 @@ function buildCharts(idVal) {
 
             //Grabbing the first 10 records in the array.
             var topTenBacteriaNames = sortedBacteria[0].otu_ids.slice(0,10); 
+             
+            //Adding otu to the names. 
+            var i
+            for (i=0;i< topTenBacteriaNames.length;i++){
+                topTenBacteriaNames[i] = "OTU " + (topTenBacteriaNames[i].toString())  
+            }
+
             var topTenBacteriaValues = sortedBacteria[0].sample_values.slice(0,10); 
             //console.log(topTenBacteriaNames);
             //console.log(topTenBacteriaValues);
