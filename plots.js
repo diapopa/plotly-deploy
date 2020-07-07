@@ -40,29 +40,24 @@ function buildCharts(idVal) {
             var samplesFromData = data.samples;
             //console.log(samplesFromData)
             var resultArray = samplesFromData.filter(sampleObj => sampleObj.id == idVal);
-            
-            //console.log(result)
-        
+                    
             // Sort the cities by growth. Can only sort an array not a dictionary. 
             var sortedBacteria = resultArray.sort((a,b) =>
             a.sample_values - b.sample_values).reverse(); 
+
             //Grab the first value in the sorted array
-            //var resultSorted = sortedBacteria[0];
-            //console.log(resultSorted);
-            // Select top five cities by population growth
-            var topTenOtuLabels = sortedBacteria.slice(0,10);
-            console.log("top ten vals")
-            //console.log(topTenOtuLabels[0]);
-            // Create arrays for top five city names and top five growth figures
-            var topTenBacteriaNames = topTenOtuLabels[0].map(bacteria => bacteria.otu_labels);
-            var topTenBacteriaValues = topTenOtuLabels[0].map(bacteria => parseInt(bacteria.sample_values));
-            console.log(topTenBacteriaNames);
-            console.log(topTenBacteriaValues);
+            //var topTenOtuLabels = sortedBacteria[0].otu_labels.slice(0,10);
+
+            //Grabbing the first 10 records in the array.
+            var topTenBacteriaNames = sortedBacteria[0].otu_ids.slice(0,10); 
+            var topTenBacteriaValues = sortedBacteria[0].sample_values.slice(0,10); 
+            //console.log(topTenBacteriaNames);
+            //console.log(topTenBacteriaValues);
             
             // Create bar chart
             var trace = {
-                x: topTenBacteriaNames,
-                y: topTenBacteriaValues,
+                y: topTenBacteriaNames,
+                x: topTenBacteriaValues,
                 type: "bar",
                 orientation: "h"
                 };
