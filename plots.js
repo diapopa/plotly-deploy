@@ -32,24 +32,39 @@ function buildMetadata(sample) {
         }
 
         });
+        var id = result.id
+        return id
 }
 
-function buildCharts(sample) {
-    //d3.json("samples.json").then((data) => {
-    //var metadata = data.metadata;
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result = resultArray[0];
 
-    // Sort the cities by growth
-    var sortedBacteria = result.sort((a,b) =>
-    a.sample_values - b.sample_values).reverse(); 
+function buildCharts(idVal) {
+    d3.json("samples.json").then((data) => {
+        var samplesFromData = data.samples;
+        //console.log(samplesFromData)
+        var resultArray = samplesFromData.filter(sampleObj => sampleObj.id == idVal);
+        
+        //console.log(result)
+    
+        // Sort the cities by growth. Can only sort an array not a dictionary. 
+        var sortedBacteria = resultArray.sort((a,b) =>
+        a.sample_values - b.sample_values).reverse(); 
 
-    // Select top five cities by population growth
-    var topTenBacteria = sortedBacteria.slice(0,10);
+        //Grab the first value in the sorted array
+        //var resultSorted = sortedBacteria[0];
+        //console.log(resultSorted);
 
-    // Create arrays for top five city names and top five growth figures
-    var topTenBacteriaNames = topTenBacteria.map(bacteria => bacteria.otu_labels);
-    var topTenBacteriaValues = topTenBacteria.map(city => parseInt(bacteria.sample_values));
+        // Select top five cities by population growth
+        var topTenOtuLabels = sortedBacteria.slice(0,10);
+        console.log("top ten vals")
+        //console.log(topTenOtuLabels[0]);
+
+        // Create arrays for top five city names and top five growth figures
+        var topTenBacteriaNames = topTenOtuLabels.map(bacteria => bacteria.otu_labels);
+        var topTenBacteriaValues = topTenBacteria.map(bacteria => parseInt(bacteria.sample_values));
+
+        console.log(topTenBacteriaNames);
+        console.log(topTenBacteriaValues);
+    })
 
     // Create bar chart
     var trace = {
