@@ -32,8 +32,6 @@ function buildMetadata(sample) {
         }
 
         });
-        var id = result.id
-        return id
 }
 
 
