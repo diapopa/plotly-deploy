@@ -58,7 +58,12 @@ function buildCharts(idVal) {
 
         // Create arrays for top five city names and top five growth figures
         var topTenBacteriaNames = topTenOtuLabels.map(bacteria => bacteria.otu_labels);
-        var topTenBacteriaValues = topTenOtuLabels.map(bacteria => parseInt(bacteria.sample_values));
+        //var topTenBacteriaValues = topTenOtuLabels.map(bacteria => parseInt(bacteria.sample_values));
+        var topTenBacteriaValues = []
+        var i
+        for (i=0;i < 5; i++) {
+            topTenBacteriaValues.append(sortedBacteria.sample_values[i]);
+        }
 
         console.log(topTenBacteriaNames);
         console.log(topTenBacteriaValues);
@@ -67,11 +72,12 @@ function buildCharts(idVal) {
         var trace = {
             x: topTenBacteriaNames,
             y: topTenBacteriaValues,
-            type: "bar"
+            type: "bar",
+            orientation: "h"
             };
         var data = [trace];
         var layout = {
-            title: "Most Rapidly Growing Cities",
+            title: "title",
             xaxis: { title: "City" },
             yaxis: { title: "Population Growth, 2016-2017"}
         };
