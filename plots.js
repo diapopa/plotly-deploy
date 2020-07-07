@@ -62,22 +62,21 @@ function buildCharts(idVal) {
 
         console.log(topTenBacteriaNames);
         console.log(topTenBacteriaValues);
-    })
-
-    // Create bar chart
-    var trace = {
-    x: topTenBacteriaNames,
-    y: topTenBacteriaValues,
-    type: "bar"
-    };
-    var data = [trace];
-    var layout = {
-        title: "Most Rapidly Growing Cities",
-        xaxis: { title: "City" },
-        yaxis: { title: "Population Growth, 2016-2017"}
-    };
-    Plotly.newPlot("bar-plot", data, layout);
-    //})
+        
+        // Create bar chart
+        var trace = {
+            x: topTenBacteriaNames,
+            y: topTenBacteriaValues,
+            type: "bar"
+            };
+        var data = [trace];
+        var layout = {
+            title: "Most Rapidly Growing Cities",
+            xaxis: { title: "City" },
+            yaxis: { title: "Population Growth, 2016-2017"}
+        };
+        Plotly.newPlot("bar-plot", data, layout);
+        })
 }
 
 function optionChanged(newSample) {
