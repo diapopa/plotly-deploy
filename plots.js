@@ -43,13 +43,13 @@ function buildCharts(idVal) {
                     
             // Sort the cities by growth. Can only sort an array not a dictionary. 
             var sortedBacteria = resultArray.sort((a,b) =>
-            a.sample_values - b.sample_values).reverse(); 
+            a.sample_values - b.sample_values); 
 
             //Grab the first value in the sorted array
-            //var topTenOtuLabels = sortedBacteria[0].otu_labels.slice(0,10);
+            var topTenOtuLabels = sortedBacteria[0].otu_labels.slice(0,10);
 
             //Grabbing the first 10 records in the array.
-            var topTenBacteriaNames = sortedBacteria[0].otu_ids.slice(0,10); 
+            var topTenBacteriaNames = sortedBacteria[0].otu_ids.slice(0,10).reverse(); 
              
             //Adding otu to the names. 
             var i
@@ -57,7 +57,7 @@ function buildCharts(idVal) {
                 topTenBacteriaNames[i] = "OTU " + (topTenBacteriaNames[i].toString())  
             }
 
-            var topTenBacteriaValues = sortedBacteria[0].sample_values.slice(0,10); 
+            var topTenBacteriaValues = sortedBacteria[0].sample_values.slice(0,10).reverse(); 
             //console.log(topTenBacteriaNames);
             //console.log(topTenBacteriaValues);
             
@@ -70,9 +70,7 @@ function buildCharts(idVal) {
                 };
             var data = [trace];
             var layout = {
-                title: "title",
-                xaxis: { title: "City" },
-                yaxis: { title: "Population Growth, 2016-2017"}
+                text :[topTenOtuLabels]
             };
             Plotly.newPlot("bar-plot", data, layout);
             })
