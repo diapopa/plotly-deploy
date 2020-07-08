@@ -76,21 +76,20 @@ function buildCharts(idVal) {
 
             // Create bubble chart
             var trace1 = {
-                x: topTenBacteriaValues,
-                y: topTenBacteriaNames,
+                x: sortedBacteria[0].otu_ids,
+                y: sortedBacteria[0].sample_values,
                 mode: 'markers',
                 marker: {
                   color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
-                  opacity: [1, 0.8, 0.6, 0.4],
-                  size: [40, 60, 80, 100]
+                  size: sortedBacteria[0].sample_values
                 }
               };
               
               var data = [trace1];
               
               var layout = {
-                title: 'Marker Size and Color',
                 showlegend: false,
+                text :[topTenOtuLabels],
                 height: 600,
                 width: 600
               };
