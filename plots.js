@@ -75,12 +75,15 @@ function buildCharts(idVal) {
             Plotly.newPlot("bar-plot", data, layout);
 
             // Create bubble chart
+            var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(250,174,50,1)');   
+            gradient.addColorStop(1, 'rgba(250,174,50,0)');
             var trace1 = {
                 x: sortedBacteria[0].otu_ids,
                 y: sortedBacteria[0].sample_values,
                 mode: 'markers',
                 marker: {
-                  color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)', 'rgb(0, 104, 144)', 'rgb(0, 144, 158)', 'rgb(137, 219, 236)', 'rgb(237, 0, 38)', 'rgb(250, 157, 0)'],
+                  color: gradient,
                   size: sortedBacteria[0].sample_values
                 }
               };
