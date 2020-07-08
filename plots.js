@@ -75,15 +75,12 @@ function buildCharts(idVal) {
             Plotly.newPlot("bar-plot", data, layout);
 
             // Create bubble chart
-            var gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, 'rgba(250,174,50,1)');   
-            gradient.addColorStop(1, 'rgba(250,174,50,0)');
             var trace1 = {
                 x: sortedBacteria[0].otu_ids,
                 y: sortedBacteria[0].sample_values,
                 mode: 'markers',
                 marker: {
-                  color: gradient,
+                  color: sortedBacteria[0].sample_values,
                   size: sortedBacteria[0].sample_values
                 }
               };
@@ -96,6 +93,19 @@ function buildCharts(idVal) {
               };
               
               Plotly.newPlot('bubble-plot', data, layout);
+
+              // Create gauge
+              var data = [
+                {
+                    domain: { x: [0, 1], y: [0, 1] },
+                    value: 270,
+                    type: "indicator",
+                    mode: "gauge+number"
+                }
+            ];
+            
+            var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+            Plotly.newPlot('gauge-plot', data, layout);
 
             })
 
