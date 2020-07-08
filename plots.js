@@ -95,7 +95,7 @@ function buildCharts(idVal) {
                 width: 600
               };
               
-              Plotly.newPlot('myDiv', data, layout);
+              Plotly.newPlot('bubble-plot', data, layout);
 
             })
 
