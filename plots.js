@@ -80,7 +80,7 @@ function buildCharts(idVal) {
                 y: sortedBacteria[0].sample_values,
                 mode: 'markers',
                 marker: {
-                  color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+                  color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)', 'rgb(0, 104, 144)', 'rgb(0, 144, 158)', 'rgb(137, 219, 236)', 'rgb(237, 0, 38)', 'rgb(250, 157, 0)'],
                   size: sortedBacteria[0].sample_values
                 }
               };
@@ -89,9 +89,7 @@ function buildCharts(idVal) {
               
               var layout = {
                 showlegend: false,
-                text :[topTenOtuLabels],
-                height: 600,
-                width: 600
+                text :[topTenOtuLabels]
               };
               
               Plotly.newPlot('bubble-plot', data, layout);
