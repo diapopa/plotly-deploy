@@ -45,21 +45,16 @@ function buildCharts(idVal) {
             var sortedBacteria = resultArray.sort((a,b) =>
             a.sample_values - b.sample_values); 
 
-            //Grab the first value in the sorted array
             var topTenOtuLabels = sortedBacteria[0].otu_labels.slice(0,10);
 
-            //Grabbing the first 10 records in the array.
             var topTenBacteriaNames = sortedBacteria[0].otu_ids.slice(0,10).reverse(); 
-             
-            //Adding otu to the names. 
+
             var i
             for (i=0;i< topTenBacteriaNames.length;i++){
                 topTenBacteriaNames[i] = "OTU " + (topTenBacteriaNames[i].toString())  
             }
 
             var topTenBacteriaValues = sortedBacteria[0].sample_values.slice(0,10).reverse(); 
-            //console.log(topTenBacteriaNames);
-            //console.log(topTenBacteriaValues);
             
             // Create bar chart
             var trace = {
@@ -70,7 +65,7 @@ function buildCharts(idVal) {
                 };
             var data = [trace];
             var layout = {
-                text :[topTenOtuLabels]
+                text: topTenOtuLabels
             };
             Plotly.newPlot("bar-plot", data, layout);
 
@@ -89,7 +84,7 @@ function buildCharts(idVal) {
               
               var layout = {
                 showlegend: false,
-                text :[topTenOtuLabels]
+                text: sortedBacteria[0].otu_labels
               };
               
               Plotly.newPlot('bubble-plot', data, layout);
