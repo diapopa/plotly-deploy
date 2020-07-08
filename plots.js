@@ -75,7 +75,7 @@ function buildCharts(idVal) {
                 y: sortedBacteria[0].sample_values,
                 mode: 'markers',
                 marker: {
-                  color: sortedBacteria[0].sample_values,
+                  color: sortedBacteria[0].otu_ids,
                   size: sortedBacteria[0].sample_values
                 }
               };
