@@ -1,6 +1,5 @@
 function init() {
     var selector = d3.select("#selDataset");
-    
     d3.json("samples.json").then((data) => {
         console.log(data);
         var sampleNames = data.names;
@@ -11,7 +10,6 @@ function init() {
             .property("value", sample);
         });
     })}
-  
 init();
 
 function optionChanged(newSample) {
@@ -24,35 +22,25 @@ function buildMetadata(sample) {
         var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
         var result = resultArray[0];
         var PANEL = d3.select("#sample-metadata");
-
         PANEL.html("");
         for (const [key, value] of Object.entries(result)) {
-
             PANEL.append("h6").text(key + ": " + value);
         }
-
         });
 }
-
 
 function buildCharts(idVal) {
         d3.json("samples.json").then((data) => {
             var samplesFromData = data.samples;
-            var resultArray = samplesFromData.filter(sampleObj => sampleObj.id == idVal);
-                    
-            // Sort the cities by growth. Can only sort an array not a dictionary. 
+            var resultArray = samplesFromData.filter(sampleObj => sampleObj.id == idVal); 
             var sortedBacteria = resultArray.sort((a,b) =>
             a.sample_values - b.sample_values); 
-
             var topTenOtuLabels = sortedBacteria[0].otu_labels.slice(0,10);
-
             var topTenBacteriaNames = sortedBacteria[0].otu_ids.slice(0,10).reverse(); 
-
             var i
             for (i=0;i< topTenBacteriaNames.length;i++){
                 topTenBacteriaNames[i] = "OTU " + (topTenBacteriaNames[i].toString())  
             }
-
             var topTenBacteriaValues = sortedBacteria[0].sample_values.slice(0,10).reverse(); 
             
             // Create bar chart
@@ -89,8 +77,6 @@ function buildCharts(idVal) {
               
               Plotly.newPlot('bubble-plot', data, layout);
             })
-
-
     }
 
 function optionChanged(newSample) {
