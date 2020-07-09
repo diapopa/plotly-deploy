@@ -60,11 +60,12 @@ function buildCharts(idVal) {
                 x: topTenBacteriaValues,
                 y: topTenBacteriaNames,
                 type: "bar",
-                orientation: "h"
+                orientation: "h",
+                text: topTenOtuLabels
                 };
             var data = [trace];
             var layout = {
-                text: topTenOtuLabels
+                title: "OTU"
             };
             Plotly.newPlot("bar-plot", data, layout);
 
@@ -72,6 +73,7 @@ function buildCharts(idVal) {
             var trace1 = {
                 x: sortedBacteria[0].otu_ids,
                 y: sortedBacteria[0].sample_values,
+                text: sortedBacteria[0].otu_labels,
                 mode: 'markers',
                 marker: {
                   color: sortedBacteria[0].otu_ids,
@@ -82,24 +84,10 @@ function buildCharts(idVal) {
               var data = [trace1];
               
               var layout = {
-                showlegend: false,
-                text: sortedBacteria[0].otu_labels
+                showlegend: false
               };
               
               Plotly.newPlot('bubble-plot', data, layout);
-              
-              var metadataFromData = data.metadata;
-              var resultArray = metadataFromData.filter(sampleObj => sampleObj.id == idVal);
-
-              // Create gauge
-              var data = [
-                {
-                    domain: { x: [0, 1], y: [0, 1] },
-                    value: data.metadata.wfreq,
-                    type: "indicator",
-                    mode: "gauge+number"
-                }
-            ];
             
             var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
             Plotly.newPlot('gauge-plot', data, layout);
