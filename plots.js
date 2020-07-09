@@ -38,7 +38,6 @@ function buildMetadata(sample) {
 function buildCharts(idVal) {
         d3.json("samples.json").then((data) => {
             var samplesFromData = data.samples;
-            //console.log(samplesFromData)
             var resultArray = samplesFromData.filter(sampleObj => sampleObj.id == idVal);
                     
             // Sort the cities by growth. Can only sort an array not a dictionary. 
@@ -88,12 +87,15 @@ function buildCharts(idVal) {
               };
               
               Plotly.newPlot('bubble-plot', data, layout);
+              
+              var metadataFromData = data.metadata;
+              var resultArray = metadataFromData.filter(sampleObj => sampleObj.id == idVal);
 
               // Create gauge
               var data = [
                 {
                     domain: { x: [0, 1], y: [0, 1] },
-                    value: 270,
+                    value: data.metadata.wfreq,
                     type: "indicator",
                     mode: "gauge+number"
                 }
